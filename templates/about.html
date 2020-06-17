@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="main-wrapper">
+
+<article class="about-section py-5">
+		    <div class="container">
+			    <h2 class="title mb-3">Sayt haqqinda</h2>
+
+	<p>
+        Bu sayt test məqsədi üçün Python\Django framework
+         ilə hazirlanıb..Qeydiiyat və Giris etmek olar.xahis
+         olunur şəxsi email ve sifrenizden istifadə etməyin.sadə
+         default gmail və sifrələrdən istifadə edin qeydiyyat
+         məlumatlarinin və elave etdiyiniz postların bir muddetden
+          sonra heroku ve database ile əlaqəli silinmesi ola biler.
+           Əlavə sual  olsa <a href="#">Talibovf976@gmail.com</a>  hesabi
+           ilə əlaqə saxlaya bilersiniz.
+        Oxudugunuz ucun coxsagolun
+        </p>
+<figure><img class="img-fluid"
+src="{% static 'assets/images/blog/about3.jpg'%}" alt="image"></figure>
+	<h1 class="mt-5">Sayt ucun istifade olunan
+    kitabxanalar ve elaveler</h1>
+<ul>
+
+asgiref==3.2.7
+Django==3.0.7
+django-widget-tweaks==1.4.8
+gunicorn==20.0.4
+Pillow==7.1.2
+pytz==2020.1
+sqlparse==0.3.1
+whitenoise==5.1.0
+
+</ul>
+
+		    </div>
+	    </article><!--//about-section-->
+
+
+	 {% endblock content %}

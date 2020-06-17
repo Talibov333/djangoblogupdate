@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+<section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+<h2 class="heading">MoonLight - A simple Blog Template </h2>
+			    <div class="intro">Welcome to my blog.. </div>
+
+			    <!-- <form class="signup-form form-inline justify-content-center pt-3">
+                    <div class="form-group">
+                        <label class="sr-only" for="semail">Your email</label>
+                        <input type="email" id="semail" name="semail1" class="form-control mr-md-1 semail" placeholder="Enter email">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form> -->
+
+		    </div><!--//container-->
+	    </section>
+
+
+
+<section class="blog-list px-3 py-5 p-md-5">
+	 <div class="container">
+        {% for post in object_list %}
+ <div class="item mb-5">
+		<div class="media">
+<img class="mr-3 img-fluid post-thumb d-none d-md-flex"
+ src=" {{ post.image.url }} " alt="image">
+	<div class="media-body">
+	<h3 class="title mb-1">
+<a href=" {% url 'post' post.pk %} "> {{post.title}} </a></h3>
+<a href="{% url 'post' post.pk %}"> {{post.subtitle}} </a></h3>
+	<div class="meta mb-1">
+		<span class="date">Published  {{post.author}}
+      </span>
+		<span class="time">    {{post.date|date:"F d, Y"}} </span>
+		<span class="comment">
+			<a href="#">8 comments</a></span></div>
+     <a class="more-link"
+ href="{% url 'post' post.pk %}  ">Read more &rarr;</a>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+{% endfor %}
+
+   <nav class="blog-nav nav nav-justified my-5">
+{% if is_paginated %}
+
+<!--  eger postlarin sayi views.py de gosterdiyimiz
+paginate_by da olan
+ reqemden coxdursa -->
+
+
+{% if page_obj.number == 1 %}
+
+<!-- sonraki sehife ucun -->
+
+<a class="nav-link-next nav-item nav-link rounded"
+href="?page=2">Next
+<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+    {% endif %}
+
+{% if page_obj.has_previous %}
+
+<!--  evelki sehife ucun  -->
+
+<a class="nav-link-next nav-item nav-link rounded"
+href="/"> Last Post
+</a>
+
+ <a class="nav-link-prev nav-item nav-link  rounded-left"
+
+href="?page={{ page_obj.previous_page_number }} ">  Previous
+<i class="arrow-prev fas fa-long-arrow-alt-left">
+
+
+ </i></a>
+ {% endif %}
+
+
+{% for num in page_obj.paginator.page_range  %}
+{% if page_obj.number == num and page_obj.number != 1 %}
+
+<!-- hansi seyfede oldugumuz gosterir -->
+
+<a class="nav-link-next nav-item nav-link rounded"
+href="?page= {{ num }} "> {{ num }}
+</a>
+
+{% endif %}
+{% endfor %}
+
+
+{% if page_obj.has_next and page_obj.number != 1 %}
+
+<!--  sonraki ve evelki sehife ucun -->
+<a class="nav-link-next nav-item nav-link rounded"
+href="?page= {{page_obj.next_page_number }} ">Next
+<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+
+<a class="nav-link-next nav-item nav-link rounded"
+href="?page= {{ page_obj.paginator.num_pages  }} "> First Post
+<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+
+{% endif %}
+
+{% endif %}
+</nav>
+		    </div>
+	    </section>
+
+{% endblock content %}

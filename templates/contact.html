@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="main-wrapper">
+  <article class="about-section py-5">
+    <div class="container">
+
+
+<figure><img class="img-fluid"
+src="{% static 'assets/images/blog/work-6.jpg'%}"
+ alt="image"></figure>
+
+    <div class="overlay-mf"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="contact-mf">
+            <div id="contact" class="box-shadow-full">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="title-box-2">
+                    <h5 class="title-left">
+                      Send Message Us
+                    </h5>
+                  </div>
+                  <div>
+
+
+     <div class="form-group">
+           {% if messages %}
+            <div class="alert alert success" >
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+         </div>
+         {% endif %}
+         </div>
+
+  <form action="" method="POST" >
+    {% csrf_token %}
+
+
+
+
+
+        <div class="row">
+       <div class="col-md-12 mb-3">
+{% for field in form.visible_fields %}
+ <div class="form-group">
+  {{ field.label_tag  }}
+  {% if form.is_bound %}
+
+  {% if field.errors %}
+
+{% render_field field class="form-control is-invalid" %}
+{% for error in field.errors %}
+
+<div class="invalid-feedback" >
+
+  {{ error }}
+</div>
+{% endfor  %}
+{% else  %}
+{% render_field field class="form-control is-valid" %}
+
+  {% endif  %}
+{% else %}
+{% render_field field class="form-control" %}
+  {% endif %}
+
+             <div class="validation"></div>
+           </div>{% endfor %}
+  </div>
+
+
+
+
+
+
+  <div class="col-md-12">
+ <button type="submit" class="button button-a button-big
+ button-rouded">Send Message</button>
+                        </div>
+
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+
+
+
+
+                <div class="col-md-6">
+                  <div class="title-box-2 pt-4 pt-md-0">
+                    <h5 class="title-left">
+                      Get in Touch
+                    </h5>
+                  </div>
+                  <div class="more-info">
+                    <p class="lead">
+
+                    </p>
+                    <ul class="list-ico">
+                <li><span class="ion-ios-location"></span>
+           Baku.Nizami.A.Azimzada 10/31</li>
+          <li><span class="ion-ios-telephone">
+
+          </span> 099 333 17 18</li>
+                      <li><span class="ion-email">
+
+                      </span> Talibovf976@gmail.com</li>
+                    </ul>
+                  </div>
+                  <div class="socials">
+          <ul class="social-list list-inline py-3 mx-auto">
+
+     <li class="list-inline-item">
+ <a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+
+    <li class="list-inline-item">
+ <a href="https://www.linkedin.com/in/fazail-talibov-b0b267192/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+
+<li class="list-inline-item">
+ <a href="https://github.com/Talibov333"><i class="fab fa-github-alt fa-fw"></i></a></li>
+
+
+
+<li class="list-inline-item">
+ <a href="https://dashboard.heroku.com/apps"><i class="fab fa-codepen fa-fw"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+</article>
+</div>
+
+
+  </div>
+{% endblock content %}

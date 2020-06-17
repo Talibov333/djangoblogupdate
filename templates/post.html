@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-wrapper">
+
+
+
+<section class="blog-list px-3 py-5 p-md-5">
+     <div class="container">
+
+ <div class="item mb-5">
+        <div class="media">
+<img class="mr-3 img-fluid post-thumb d-none d-md-flex"
+ src=" {{post.image.url}} " alt="image">
+    <div class="media-body">
+    <h3 class="title mb-1">
+<a href=" {% url 'post' post.pk %} "> {{post.title}} </a></h3>
+<a href="blog-post.html"> {{post.subtitle}} </a></h3>
+    <div class="meta mb-1">
+        <span class="date">Published  {{post.author}}
+      </span>
+        <span class="time">    {{post.date}} </span>
+        <span class="comment">
+            <a href="#">8 comments</a></span></div>
+<div class="intro"> {{post.content}} </div>
+
+                        </div><!--//media-body-->
+                    </div><!--//media-->
+                </div><!--//item-->
+
+
+            </div>
+        </section>
+
+{% endblock content %}
